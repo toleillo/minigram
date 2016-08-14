@@ -1,0 +1,9 @@
+{% for el in posts %}
+    <div class="post-detail">
+        {% if el.title %}
+            <h3>{{ el.title }}</h3>
+        {% endif %}
+
+        <img class="thumbnail" src="{{ asset('uploads/images/' ~ el.image) }}" width="600">
+    </div>
+{% endfor %}

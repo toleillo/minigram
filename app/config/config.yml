@@ -57,6 +57,18 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        post_image:
+            quality: 90
+            filters:
+                thumbnail: { size: [600, 400], mode: outbound }
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

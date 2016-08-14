@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row columns">
+        <div class="small-4 medium-4 large-4 columns text-center">
+            #<span id="post_count"></span> Posts
+        </div>
+        <div class="small-4 medium-4 large-4 columns text-center">
+            <form action="{{ path('homepage_export_xls') }}">
+                <input type="submit" value="Export to Excel" class="button">
+            </form>
+            <form action="{{ path('homepage_export_csv') }}">
+                <input type="submit" value="Export to CSV" class="button">
+            </form>
+        </div>
+        <div class="small-4 medium-4 large-4 columns text-center">
+            #<span id="views_count"></span> Views
+        </div>
+    </div>
+
+    <div class="callout large primary">
+        <div class="row column text-center">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id' : 'upload-form'}}) }}
+
+            {{ form_errors(form) }}
+            {{ form_rest(form) }}
+
+            <input type="submit" value="Submit" class="button hide btn-submit">
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div id="post_listing" class="row medium-8 large-7 columns">
+        {{ include('app/ajaxPosts.html.twig', { 'posts': posts }) }}
+    </div>
+{% endblock %}
