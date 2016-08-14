@@ -117,7 +117,7 @@ class AppController extends Controller
             $em = $this->getDoctrine()->getManager();
             $posts = $em->getRepository('AppBundle:Post')->findAll();
             foreach($posts as $post) {
-                fputcsv($handle, [$post->getTitle(), $post->getImage()], ';');
+                fputcsv($handle, [$post->getTitle(), 'uploads/images/' . $post->getImage()], ';');
             }
 
             fclose($handle);
